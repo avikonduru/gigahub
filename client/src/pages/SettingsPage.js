@@ -2,23 +2,31 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // antd
-import { Layout, Typography } from 'antd';
+import { Layout, Typography, Button, Row, Col, Card } from 'antd';
+import { CloudDownloadOutlined } from '@ant-design/icons';
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 const { Header, Content } = Layout;
 
 const SettingsPage = (props) => {
 	return (
 		<Fragment>
-			<Header className='site-layout-background' style={{ padding: 0 }}>
-				Settings Page
-			</Header>
 			<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
-				<div
-					className='site-layout-background'
-					style={{ padding: 24, textAlign: 'center' }}
-				>
-					Gigahub Content
+				<div style={{ padding: 24, textAlign: 'center' }}>
+					<Row>
+						<Col span={12} style={{ textAlign: 'left' }}>
+							<Title level={3}>Settings</Title>
+						</Col>
+						<Col span={12} style={{ textAlign: 'right' }}>
+							<Button
+								type='danger'
+								size='large'
+								style={{ fontWeight: 'bold', borderRadius: 20 }}
+							>
+								Log Out
+							</Button>
+						</Col>
+					</Row>
 				</div>
 			</Content>
 		</Fragment>

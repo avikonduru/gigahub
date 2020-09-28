@@ -14,7 +14,7 @@ import Routes from './utils/Routes';
 import { Layout } from 'antd';
 
 const StyledDiv = styled.div`
-	font-family: 'Nunito', sans-serif;
+	font-family: 'Montserrat', sans-serif;
 `;
 
 function App() {
