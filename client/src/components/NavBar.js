@@ -39,7 +39,7 @@ const NavBar = (props) => {
 					style={{ color: 'white', textAlign: 'center', margin: 20 }}
 					level={2}
 				>
-					<StyledTitle>LISA-Group</StyledTitle>
+					<StyledTitle>Cyber Factory</StyledTitle>
 				</Title>
 				<Menu theme='dark' mode='inline' defaultSelectedKeys={['1']}>
 					<Menu.Item key='1' icon={<DashboardOutlined />}>
