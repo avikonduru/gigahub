@@ -2,7 +2,7 @@ import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 
 // antd
-import { Layout, Typography, Button, Row, Col, Card } from 'antd';
+import { Layout, Typography, Button, Row, Col, Card, Upload } from 'antd';
 import { CloudDownloadOutlined } from '@ant-design/icons';
 
 const { Title, Text } = Typography;
@@ -18,13 +18,15 @@ const DataLakePage = (props) => {
 							<Title level={3}>Data Lake</Title>
 						</Col>
 						<Col span={12} style={{ textAlign: 'right' }}>
-							<Button
-								type='primary'
-								size='large'
-								style={{ fontWeight: 'bold', borderRadius: 20 }}
-							>
-								Upload Data
-							</Button>
+							<Upload>
+								<Button
+									type='primary'
+									size='large'
+									style={{ fontWeight: 'bold', borderRadius: 20 }}
+								>
+									Upload Data
+								</Button>
+							</Upload>
 						</Col>
 					</Row>
 					<Row style={{ marginTop: 20 }}>
@@ -43,10 +45,10 @@ const DataLakePage = (props) => {
 										}}
 									>
 										<Row>
+											<Col span={4}>Name</Col>
 											<Col span={4}>Received Date</Col>
 											<Col span={4}>Byte Size</Col>
 											<Col span={4}>Type</Col>
-											<Col span={4}>Sender Name</Col>
 											<Col span={4}>Tags</Col>
 											<Col span={4}>Actions</Col>
 										</Row>
@@ -55,10 +57,10 @@ const DataLakePage = (props) => {
 							>
 								<div style={{ textAlign: 'left' }}>
 									<Row align='middle'>
+										<Col span={4}>Flight 228 Data Logs</Col>
 										<Col span={4}>2020-09-01 19:42:20.328</Col>
 										<Col span={4}>75 KB</Col>
 										<Col span={4}>application/zip</Col>
-										<Col span={4}>akonduru@gigahub.io</Col>
 										<Col style={{ color: 'green' }} span={4}>
 											OK
 										</Col>
@@ -69,24 +71,10 @@ const DataLakePage = (props) => {
 										</Col>
 									</Row>
 									<Row align='middle'>
+										<Col span={4}>Flight 1233 Data Logs</Col>
 										<Col span={4}>2020-09-01 19:42:20.328</Col>
 										<Col span={4}>75 KB</Col>
 										<Col span={4}>application/zip</Col>
-										<Col span={4}>akonduru@gigahub.io</Col>
-										<Col style={{ color: 'green' }} span={4}>
-											OK
-										</Col>
-										<Col span={4}>
-											<Button type='link'>
-												<CloudDownloadOutlined style={{ fontSize: 24 }} />
-											</Button>
-										</Col>
-									</Row>
-									<Row align='middle'>
-										<Col span={4}>2020-09-01 19:42:20.328</Col>
-										<Col span={4}>75 KB</Col>
-										<Col span={4}>application/zip</Col>
-										<Col span={4}>akonduru@gigahub.io</Col>
 										<Col style={{ color: 'green' }} span={4}>
 											OK
 										</Col>

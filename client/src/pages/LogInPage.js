@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 // antd
 import { Layout, Row, Col, Card, Typography, Form, Input, Button } from 'antd';
@@ -14,6 +15,12 @@ const StyledTitle = styled.div`
 
 const LoginPage = (props) => {
 	const [form] = Form.useForm();
+	const history = useHistory();
+
+	function handleClick() {
+		history.push('/');
+	}
+
 	return (
 		<Fragment>
 			<Content style={{ backgroundColor: '#05042C' }}>
@@ -100,6 +107,7 @@ const LoginPage = (props) => {
 												fontSize: 17,
 												fontWeight: 'bold',
 											}}
+											onClick={handleClick}
 										>
 											Submit
 										</Button>

@@ -1,9 +1,15 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
+import { Link, Redirect } from 'react-router-dom';
 
 // antd
 import { Layout, Row, Col, Card, Typography, Form, Input, Button } from 'antd';
+
+//Redux
+import { connect } from 'react-redux';
+import { setAlert } from '../redux/actions/alertAction';
+import { register } from '../redux/actions/userAction';
 
 const { Header, Content, Footer } = Layout;
 const { Title } = Typography;
@@ -12,8 +18,34 @@ const StyledTitle = styled.div`
 	font-family: 'Comfortaa', cursive;
 `;
 
-const SignUpPage = (props) => {
+const SignUpPage = ({ setAlert, register, isAuthenticated }) => {
 	const [form] = Form.useForm();
+
+	const [formData, setFormData] = useState({
+		firstName: '',
+		lastName: '',
+		email: '',
+		password: '',
+		subdomain: '',
+		purpose: '',
+	});
+
+	const { firstName, lastName, email, password, subdomain, purpose } = formData;
+
+	const onChange = (e) => {
+		setFormData({ ...formData, [e.target.name]: e.target.value });
+	};
+
+	const onSubmit = async (e) => {
+		e.preventDefault();
+		// register({ firstName, lastName, email, password });
+		console.log(formData);
+	};
+
+	if (isAuthenticated) {
+		return <Redirect to='/' />;
+	}
+
 	return (
 		<Fragment>
 			<Content style={{ backgroundColor: '#05042C' }}>
@@ -43,7 +75,12 @@ const SignUpPage = (props) => {
 									marginTop: 10,
 								}}
 							>
-								<Form form={form} layout='vertical' size='large'>
+								<Form
+									form={form}
+									layout='vertical'
+									size='large'
+									onSubmit={(e) => onSubmit(e)}
+								>
 									<Form.Item
 										label={
 											<label
@@ -60,6 +97,9 @@ const SignUpPage = (props) => {
 									>
 										<Input
 											placeholder='Enter your first name'
+											name='firstName'
+											value={firstName}
+											onChange={(e) => onChange(e)}
 											style={{
 												borderRadius: 10,
 												backgroundColor: '#727B90',
@@ -84,6 +124,9 @@ const SignUpPage = (props) => {
 									>
 										<Input
 											placeholder='Enter your last name'
+											name='lastName'
+											value={lastName}
+											onChange={(e) => onChange(e)}
 											style={{
 												borderRadius: 10,
 												backgroundColor: '#727B90',
@@ -108,6 +151,9 @@ const SignUpPage = (props) => {
 									>
 										<Input
 											placeholder='Enter your email'
+											name='email'
+											value={email}
+											onChange={(e) => onChange(e)}
 											style={{
 												borderRadius: 10,
 												backgroundColor: '#727B90',
@@ -132,6 +178,9 @@ const SignUpPage = (props) => {
 									>
 										<Input.Password
 											placeholder='Enter a password'
+											name='password'
+											value={password}
+											onChange={(e) => onChange(e)}
 											bordered={false}
 											style={{
 												borderRadius: 10,
@@ -158,6 +207,9 @@ const SignUpPage = (props) => {
 										<Input
 											placeholder='Enter a new subdomain'
 											suffix='.gigahub.io'
+											name='subdomain'
+											value={subdomain}
+											onChange={(e) => onChange(e)}
 											bordered={false}
 											style={{
 												borderRadius: 10,
@@ -184,6 +236,9 @@ const SignUpPage = (props) => {
 										<Input.TextArea
 											placeholder='Tell us your purpose for using gigahub'
 											rows={5}
+											name='purpose'
+											value={purpose}
+											onChange={(e) => onChange(e)}
 											bordered={false}
 											style={{
 												borderRadius: 10,
@@ -196,6 +251,7 @@ const SignUpPage = (props) => {
 									<Form.Item>
 										<Button
 											ghost
+											htmlType='submit'
 											style={{
 												borderRadius: 10,
 												fontSize: 17,
@@ -254,6 +310,19 @@ const SignUpPage = (props) => {
 	);
 };
 
-SignUpPage.propTypes = {};
+SignUpPage.propTypes = {
+	setAlert: PropTypes.func.isRequired,
+	register: PropTypes.func.isRequired,
+	isAuthenticated: PropTypes.bool,
+};
 
-export default SignUpPage;
+const mapStateToProps = (state) => ({
+	isAuthenticated: state.user.isAuthenticated,
+});
+
+const mapActionsToProps = {
+	setAlert,
+	register,
+};
+
+export default connect(mapStateToProps, mapActionsToProps)(SignUpPage);

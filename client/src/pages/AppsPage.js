@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 // antd
 import { Layout, Typography, Button } from 'antd';
@@ -12,6 +13,12 @@ const { Title } = Typography;
 const { Header, Content } = Layout;
 
 const AppsPage = (props) => {
+	const history = useHistory();
+
+	function handleClick() {
+		history.push('/app-creation');
+	}
+
 	return (
 		<Fragment>
 			<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
@@ -46,7 +53,7 @@ const AppsPage = (props) => {
 								style={{ textAlign: 'left' }}
 							/>
 							<div style={{ textAlign: 'right', marginTop: 20 }}>
-								<Button type='primary' size='large'>
+								<Button type='primary' size='large' onClick={handleClick}>
 									<PlusOutlined />
 								</Button>
 							</div>

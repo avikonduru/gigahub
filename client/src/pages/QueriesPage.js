@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect, useHistory } from 'react-router-dom';
 
 // antd
 import { Layout, Typography, Button, Row, Col, Card } from 'antd';
@@ -9,6 +10,12 @@ const { Title, Text } = Typography;
 const { Header, Content } = Layout;
 
 const QueriesPage = (props) => {
+	const history = useHistory();
+
+	function handleClick() {
+		history.push('/query-creation');
+	}
+
 	return (
 		<Fragment>
 			<Content style={{ margin: '24px 16px 0', overflow: 'initial' }}>
@@ -39,7 +46,7 @@ const QueriesPage = (props) => {
 									<Row align='middle'>
 										<Col span={20} style={{ textAlign: 'left' }}>
 											<Title level={5}>
-												Flight #1234 Log metrics on 12/16/19
+												Flight #228 Log metrics on 12/16/19
 											</Title>
 											<Text>
 												Data Set to include flight data such as speed, altitude,
@@ -47,7 +54,7 @@ const QueriesPage = (props) => {
 											</Text>
 										</Col>
 										<Col span={4} style={{ textAlign: 'right' }}>
-											<Button type='link'>
+											<Button type='link' onClick={handleClick}>
 												<EditOutlined style={{ fontSize: 24 }} />
 											</Button>
 										</Col>

@@ -12,6 +12,7 @@ import {
 	DashboardOutlined,
 	AppstoreOutlined,
 	FileSearchOutlined,
+	LaptopOutlined,
 } from '@ant-design/icons';
 
 const { Title } = Typography;
@@ -54,11 +55,15 @@ const NavBar = (props) => {
 						<span>Queries</span>
 						<Link to='/queries' />
 					</Menu.Item>
-					<Menu.Item key='4' icon={<CloudServerOutlined />}>
+					<Menu.Item key='4' icon={<LaptopOutlined />}>
+						<span>Devices</span>
+						<Link to='/devices' />
+					</Menu.Item>
+					<Menu.Item key='5' icon={<CloudServerOutlined />}>
 						<span>Data Lake</span>
 						<Link to='/data-lake' />
 					</Menu.Item>
-					<Menu.Item key='5' icon={<SettingOutlined />}>
+					<Menu.Item key='6' icon={<SettingOutlined />}>
 						<span>Settings</span>
 						<Link to='/settings' />
 					</Menu.Item>
